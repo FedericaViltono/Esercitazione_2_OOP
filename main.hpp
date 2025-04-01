@@ -1,15 +1,15 @@
 #pragma once
 
 template<typename T>
-class complex_number {
-    static_assert(std::is_floating_point_v<T>); //permette di utilizzare solo numeri in virgola mobile (float, double)
 
+class complex_number {
+    static_assert(std::is_floating_point_v<T>);   //vincolo T ad essere floating point
+    
 private:
     T parte_reale;
     T parte_immaginaria;
 
 public:
-
     //costruttore di default
     complex_number() : parte_reale(T(0)), parte_immaginaria(T(0)) {} 
 
@@ -60,7 +60,6 @@ public:
     }
 
 
-//PARTE OPZIONALE: vincolo T ad essere floating point
     //overload dell'operatore += con complesso, scalare in ordine
     complex_number<T> operator+=(T value) {
         parte_reale += value;
@@ -86,7 +85,7 @@ public:
     
 };
 
-//commutatività degli operatori + e *
+//commutativita' degli operatori + e *
 template<typename T>
 std::ostream&
 operator<<(std::ostream& os, const complex_number<T>& numero) {
